@@ -46,15 +46,14 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList() {
         //Given
-        List<Integer> listDifferentNumbers = new ArrayList<>();
-        Arrays.asList(1, 2);
-
+        List<Integer> listDifferentNumbers = new ArrayList<>(Arrays.asList(1, 2, 3));
         OddNumberExterminator oddNumberExterminator = new OddNumberExterminator();
 
         //When
+        List<Integer> testListEven = Arrays.asList(2);
         List<Integer> result = oddNumberExterminator.exterminate(listDifferentNumbers);
 
         //Then
-        Assertions.assertEquals(result, listDifferentNumbers);
+        Assertions.assertEquals(result, testListEven);
     }
 }
