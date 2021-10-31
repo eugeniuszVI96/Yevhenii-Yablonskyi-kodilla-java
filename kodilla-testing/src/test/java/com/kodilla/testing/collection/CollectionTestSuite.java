@@ -31,9 +31,7 @@ public class CollectionTestSuite {
     void testOddNumberExterminatorEmptyList() {
         //Given
         List<Integer> emptyList = new ArrayList<>();
-
         OddNumberExterminator oddNumberExterminator = new OddNumberExterminator();
-
 
         //When
         List<Integer> result = oddNumberExterminator.exterminate(emptyList);
@@ -46,11 +44,11 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList() {
         //Given
-        List<Integer> listDifferentNumbers = new ArrayList<>(Arrays.asList(1, 2, 3));
+        List listDifferentNumbers = Arrays.asList(1, 2, 3);
         OddNumberExterminator oddNumberExterminator = new OddNumberExterminator();
+        List<Integer> testListEven = Arrays.asList(2);
 
         //When
-        List<Integer> testListEven = Arrays.asList(2);
         List<Integer> result = oddNumberExterminator.exterminate(listDifferentNumbers);
 
         //Then
