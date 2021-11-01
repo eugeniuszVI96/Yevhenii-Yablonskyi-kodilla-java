@@ -1,4 +1,5 @@
-package com.kodilla.testing;
+package com.kodilla.testing.user;
+
 
 public class TestingMain {
 
