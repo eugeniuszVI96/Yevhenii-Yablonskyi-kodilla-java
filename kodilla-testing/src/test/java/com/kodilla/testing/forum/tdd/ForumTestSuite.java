@@ -32,7 +32,7 @@ public class ForumTestSuite {
     @DisplayName("Tests for posts")
     class TestPosts {
         @Test
-            //1
+            //Test 1: sprawdzający, czy po dodaniu nowego postu liczba postów wynosi 1.
         void testAddPost() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
@@ -45,7 +45,7 @@ public class ForumTestSuite {
         }
 
         @Test
-            //3
+            //Test 3: sprawdzający, czy post pobrany z klasy ForumUser jest taki sam jak post, który był wstawiany do klasy.
         void testGetPost() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
@@ -61,7 +61,7 @@ public class ForumTestSuite {
         }
 
         @Test
-            //5
+            //Test 5: sprawdzający, czy próba usunięcia nieistniejącego posta skończy się zwróceniem wyniku false.
         void testRemovePostNotExisting() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
@@ -76,7 +76,7 @@ public class ForumTestSuite {
         }
 
         @Test
-            //7
+            //Test 7: weryfikujący, czy udało się usunąć wybrany post z klasy.
         void testRemovePost() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
@@ -97,7 +97,7 @@ public class ForumTestSuite {
     @DisplayName("Tests for comments")
     class TestsComments {
         @Test
-            //2
+            //Test 2: sprawdzający, czy po dodaniu nowego komentarza liczba komentarzy wynosi 1.
         void testAddComment() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
@@ -111,7 +111,7 @@ public class ForumTestSuite {
         }
 
         @Test
-            //4
+        //Test 4: sprawdzający, czy komentarz pobrany z klasy ForumUser jest taki sam jak komentarz, który był wstawiany do klasy.
         void testGetComment() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
@@ -130,7 +130,7 @@ public class ForumTestSuite {
         }
 
         @Test
-            //6
+        //Test 6: sprawdzający, czy próba usunięcia nieistniejącego komentarza skończy się zwróceniem wyniku false.
         void testRemoveCommentNotExisting() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
@@ -147,7 +147,7 @@ public class ForumTestSuite {
         }
 
         @Test
-            //8
+            //Test 8: weryfikujący, czy udało się usunąć wybrany komentarz z klasy.
         void testRemoveComment() {
             //Given
             ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
