@@ -5,29 +5,31 @@ import java.util.List;
 
 public class ShapeCollector {
 
-    private List<Shape> shapeCollection = new ArrayList<>();
+    private List<String> shapeCollection = new ArrayList<>();
 
-    public List<Shape> getShapeCollection() {
+    public List<String> getShapeCollection() {
         return shapeCollection;
     }
 
     public void addFigure(Shape shape) {
-        shapeCollection.add(shape);
+        shapeCollection.add(shape.getAll());
     }
 
     public boolean removeFigure(Shape shape) {
-        shapeCollection.remove(shape);
+        shapeCollection.remove(shape.getAll());
         return true;
     }
 
-    public Shape getFigure(int n){
-        Shape figure = shapeCollection.get(n);
+    public String getFigure(int n) {
+        String figure = shapeCollection.get(n);
         return figure;
     }
 
-    public void showFigures(){
+    public String showFigures() {
+        String figure = null;
         for(int i = 0; i< shapeCollection.size(); i++) {
-            System.out.println(shapeCollection.get(i));
+            figure = shapeCollection.get(i);
         }
+        return figure;
     }
 }

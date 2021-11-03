@@ -12,7 +12,7 @@ public class ShapeCollectorTestSuite {
 
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square("Square");
+        Shape shape = new Square(3.1);
 
         //When
         shapeCollector.addFigure(shape);
@@ -26,7 +26,7 @@ public class ShapeCollectorTestSuite {
 
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square("Square");
+        Shape shape = new Square(3.1);
         shapeCollector.addFigure(shape);
 
         //When
@@ -42,14 +42,16 @@ public class ShapeCollectorTestSuite {
 
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square("Square");
+        Shape shape = new Square(3.1);
         shapeCollector.addFigure(shape);
+        List<String> test = shapeCollector.getShapeCollection();
+        String getTest = test.get(0);
 
         //When
-        Shape result = shapeCollector.getFigure(0);
+        String result = shapeCollector.getFigure(0);
 
         //Then
-        assertEquals(shape, result);
+        assertEquals(test, result);
     }
 
     @Test
@@ -57,16 +59,14 @@ public class ShapeCollectorTestSuite {
 
         //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square("Square");
+        Shape shape = new Square(3.1);
         shapeCollector.addFigure(shape);
-
-        ArrayList<Shape> shapeList= new ArrayList<>();
-        shapeList.add(shape);
+        String figure = shapeCollector.getFigure(0);
 
         //When
-        List<Shape> shapeResultList = shapeCollector.getShapeCollection();
+        String shapeResultList = shapeCollector.showFigures();
 
         //Then
-        assertEquals(shapeList, shapeResultList);
+        assertEquals(figure, shapeResultList);
     }
 }
