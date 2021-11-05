@@ -39,34 +39,39 @@ public class ShapeCollectorTestSuite {
 
     @Test
     public void testGetFigure() {
-
-        //Given
+        // given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square(3.1);
-        shapeCollector.addFigure(shape);
-        List<String> test = shapeCollector.getShapeCollection();
-        String getTest = test.get(0);
+        Shape triangle = new Triangle(1.0, 2.0, 3.0);
+        Shape square = new Square (3.5);
+        Shape circle = new Circle(5.0);
+        shapeCollector.addFigure(triangle);
+        shapeCollector.addFigure(square);
+        shapeCollector.addFigure(circle);
 
-        //When
-        String result = shapeCollector.getFigure(0);
+        // when
+        Shape result = shapeCollector.getFigure(1);
 
-        //Then
-        assertEquals(test, result);
+        // then
+        assertEquals(new Square(3.5), result);
+
     }
 
     @Test
     public void testShowFigures(){
 
-        //Given
+        // given
         ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square(3.1);
-        shapeCollector.addFigure(shape);
-        String figure = shapeCollector.getFigure(0);
+        Shape triangle = new Triangle(1.0, 2.0, 3.0);
+        Shape square = new Square (3.5);
+        Shape circle = new Circle(5.0);
+        shapeCollector.addFigure(triangle);
+        shapeCollector.addFigure(square);
+        shapeCollector.addFigure(circle);
 
-        //When
-        String shapeResultList = shapeCollector.showFigures();
+        // when
+        String result = shapeCollector.showFigures();
 
-        //Then
-        assertEquals(figure, shapeResultList);
+        // then
+        assertEquals("Triangle(1.0,2.0,3.0);Square(3.5);Circle(5.0)", result);
     }
 }

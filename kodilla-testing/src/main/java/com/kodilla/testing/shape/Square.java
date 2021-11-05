@@ -1,24 +1,39 @@
 package com.kodilla.testing.shape;
 
-public class Square implements Shape{
+public class Square implements Shape {
 
-    public String name = "Square";
-    public Double sideSquare;
+    private double side;
 
-    public Square(Double sideSquare) {
-        this.sideSquare = sideSquare;
+    public Square(double side) {
+        this.side = side;
     }
 
-    public Double getField() {
-        double result = getSideSquare() * getSideSquare();
-        return result;
+    public double getField() {
+        return side * side;
     }
 
     public String getShapeName() {
-        return name;
+        return "Square";
     }
 
-    public Double getSideSquare() {
-        return sideSquare;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Square square = (Square) o;
+
+        return Double.compare(square.side, side) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        long temp = Double.doubleToLongBits(side);
+        return (int) (temp ^ (temp >>> 32));
+    }
+
+    @Override
+    public String toString() {
+        return getShapeName() + "("+ side + ")";
     }
 }
