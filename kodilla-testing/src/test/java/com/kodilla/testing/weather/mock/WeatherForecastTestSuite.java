@@ -37,60 +37,117 @@ class WeatherForecastTestSuite {
     @Mock
     private Temperatures temperaturesMock;
 
-    @Test
-    void testCalculateForecastWithMock() {
-        //Given
-        Map<String, Double> temperaturesMap = new HashMap<>();
-        temperaturesMap.put("Rzeszow", 25.5);
-        temperaturesMap.put("Krakow", 26.2);
-        temperaturesMap.put("Wroclaw", 24.8);
-        temperaturesMap.put("Warszawa", 25.2);
-        temperaturesMap.put("Gdansk", 26.1);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+    @Nested
+    class GroupTestsCalculateForecast {
+        @Test
+        void testCalculateForecastWithMock() {
+            //Given
+            Map<String, Double> temperaturesMap = new HashMap<>();
+            temperaturesMap.put("Rzeszow", 25.5);
+            temperaturesMap.put("Krakow", 26.2);
+            temperaturesMap.put("Wroclaw", 24.8);
+            temperaturesMap.put("Warszawa", 25.2);
+            temperaturesMap.put("Gdansk", 26.1);
+            when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+            WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
-        //When
-        int quantityOfSensors = weatherForecast.calculateForecast().size();
+            //When
+            int quantityOfSensors = weatherForecast.calculateForecast().size();
 
-        //Then
-        Assertions.assertEquals(5, quantityOfSensors);
+            //Then
+            Assertions.assertEquals(5, quantityOfSensors);
+        }
     }
 
-    @Test
-    void testCalculateAverageTemperature() {
-        //Given
-        Map<String, Double> temperaturesMap = new HashMap<>();
-        temperaturesMap.put("Rzeszow", 25.5);
-        temperaturesMap.put("Krakow", 26.2);
-        temperaturesMap.put("Wroclaw", 24.8);
-        temperaturesMap.put("Warszawa", 25.2);
-        temperaturesMap.put("Gdansk", 26.1);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+    @Nested
+    class  GroupTestsCalculateAverageTemperature {
 
-        //When
-        double result = weatherForecast.calculateAverageTemperature();
+        @Test
+        void testCalculateAverageTemperature() {
+            //Given
+            Map<String, Double> temperaturesMap = new HashMap<>();
+            temperaturesMap.put("Rzeszow", 25.5);
+            temperaturesMap.put("Krakow", 26.2);
+            temperaturesMap.put("Wroclaw", 24.8);
+            temperaturesMap.put("Warszawa", 25.2);
+            temperaturesMap.put("Gdansk", 26.1);
+            when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+            WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
-        //Then
-        assertEquals(25.56, result);
+            //When
+            double result = weatherForecast.calculateAverageTemperature();
+
+            //Then
+            assertEquals(25.56, result);
+        }
+
+        @Test
+        void testCalculateAverageTemperatureForEmptyMap() {
+            //Given
+            Map<String, Double> temperaturesMap = new HashMap<>();
+            when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+            WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+
+            //When
+            Double result = weatherForecast.calculateAverageTemperature();
+
+            //Then
+            assertNull(result);
+        }
     }
 
-    @Test
-    void testCalculateMedianTemperatures() {
-        //Given
-        Map<String, Double> temperaturesMap = new HashMap<>();
-        temperaturesMap.put("Rzeszow", 25.5);
-        temperaturesMap.put("Krakow", 26.2);
-        temperaturesMap.put("Wroclaw", 24.8);
-        temperaturesMap.put("Warszawa", 25.2);
-        temperaturesMap.put("Gdansk", 26.1);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+    @Nested
+    class GroupTestsCalculateMedianTemperatures {
+        @Test
+        void testCalculateMedianTemperaturesForOddSizeMap() {
+            //Given
+            Map<String, Double> temperaturesMap = new HashMap<>();
+            temperaturesMap.put("Rzeszow", 25.5);
+            temperaturesMap.put("Krakow", 26.2);
+            temperaturesMap.put("Wroclaw", 24.8);
+            temperaturesMap.put("Warszawa", 25.2);
+            temperaturesMap.put("Gdansk", 26.1);
+            when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+            WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
-        //When
-        double result = weatherForecast.calculateMedianTemperatures();
+            //When
+            double result = weatherForecast.calculateMedianTemperatures();
 
-        //Then
-        assertEquals(25.5, result);
+            //Then
+            assertEquals(25.5, result);
+        }
+
+        @Test
+        void testCalculateMedianTemperaturesForEvenSizeMap() {
+            //Given
+            Map<String, Double> temperaturesMap = new HashMap<>();
+            temperaturesMap.put("Rzeszow", 25.5);
+            temperaturesMap.put("Krakow", 26.2);
+            temperaturesMap.put("Wroclaw", 24.8);
+            temperaturesMap.put("Warszawa", 25.2);
+            when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+            WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+
+            //When
+            double result = weatherForecast.calculateMedianTemperatures();
+
+            //Then
+            assertEquals(25.35, result);
+        }
+
+        @Test
+        void testCalculateMedianTemperaturesForEmptyMap() {
+            //Given
+            Map<String, Double> temperaturesMap = new HashMap<>();
+            when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+            WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+
+            //When
+            Double result = weatherForecast.calculateMedianTemperatures();
+
+            //Then
+            assertNull(result);
+
+        }
     }
 }
