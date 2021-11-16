@@ -92,7 +92,7 @@ class WeatherForecastTestSuite {
             Double result = weatherForecast.calculateAverageTemperature();
 
             //Then
-            assertNull(result);
+            assertEquals(Double.NaN, result);
         }
     }
 
@@ -146,7 +146,7 @@ class WeatherForecastTestSuite {
             Double result = weatherForecast.calculateMedianTemperatures();
 
             //Then
-            assertNull(result);
+            assertEquals(Double.NaN, result);
 
         }
     }
