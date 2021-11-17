@@ -22,14 +22,9 @@ public class BookLibrary {
         return bookList;
     }
 
-    //1 gdy użytkownik nie ma wypożyczonych żadnych książek,
-    //2 gdy ma wypożyczoną jedną książkę,
-    //3 gdy ma wypożyczonych 5 książek.
-
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
 
         List<Book> bookList = libraryDatabase.listBooksInHandsOf(libraryUser);
-        if (bookList.isEmpty()) return null;
         return bookList;
     }
 }

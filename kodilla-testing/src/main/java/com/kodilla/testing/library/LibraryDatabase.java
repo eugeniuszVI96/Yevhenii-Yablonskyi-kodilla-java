@@ -1,17 +1,11 @@
-//Drugi zespół pracuje nad zestawem klas służących do
-// zapisywania stanu wypożyczeń
-// oraz stanu księgozbioru biblioteki w bazie danych naszego systemu.
-
 package com.kodilla.testing.library;
 
 import java.util.List;
 
 public interface LibraryDatabase {
 
-    // lists books having title beginning with titleFragment
     List<Book> listBooksWithCondition(String titleFragment);
 
-    // list books borrowed by libraryUser
     List<Book> listBooksInHandsOf(LibraryUser libraryUser);
 
     // try to rent a book for libraryUser

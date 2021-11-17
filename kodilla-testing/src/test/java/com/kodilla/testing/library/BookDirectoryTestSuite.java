@@ -91,7 +91,6 @@ public class BookDirectoryTestSuite {
 
     }
 
-    //1 gdy użytkownik nie ma wypożyczonych żadnych książek,
     @Test
     void testListBooksInHandsOfisEmpty() {
         //Given
@@ -104,10 +103,9 @@ public class BookDirectoryTestSuite {
         //When
         List<Book> theListOfBooksIsEmpty = bookLibrary.listBooksInHandsOf(libraryUser);
 
-        assertEquals(null, theListOfBooksIsEmpty);
+        assertEquals(true, theListOfBooksIsEmpty.isEmpty());
     }
 
-    //2 gdy ma wypożyczoną jedną książkę,
     @Test
     void testListBooksInHandsOfIfABook() {
         //Given
@@ -125,7 +123,6 @@ public class BookDirectoryTestSuite {
 
     }
 
-    //3 gdy ma wypożyczonych 5 książek.
     @Test
     void testBooksInHandsOfIfFiveBooks() {
         //Given
