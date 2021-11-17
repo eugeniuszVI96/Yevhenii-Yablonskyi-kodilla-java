@@ -3,12 +3,12 @@ package com.kodilla.testing.library;
 public class Book {
 
     String title;
-    String athor;
+    String author;
     int publicationYear;
 
-    public Book(String title, String athor, int publicationYear) {
+    public Book(String title, String author, int publicationYear) {
         this.title = title;
-        this.athor = athor;
+        this.author = author;
         this.publicationYear = publicationYear;
     }
 
@@ -16,8 +16,8 @@ public class Book {
         return title;
     }
 
-    public String getAthor() {
-        return athor;
+    public String getAuthor() {
+        return author;
     }
 
     public int getPublicationYear() {
@@ -28,8 +28,8 @@ public class Book {
         this.title = title;
     }
 
-    public void setAthor(String athor) {
-        this.athor = athor;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public void setPublicationYear(int publicationYear) {
@@ -40,7 +40,7 @@ public class Book {
     public String toString() {
         return "Book{" +
                 "title='" + title + '\'' +
-                ", athor='" + athor + '\'' +
+                ", athor='" + author + '\'' +
                 ", publicationYear=" + publicationYear +
                 '}';
     }
@@ -54,13 +54,13 @@ public class Book {
 
         if (publicationYear != book.publicationYear) return false;
         if (!title.equals(book.title)) return false;
-        return athor.equals(book.athor);
+        return author.equals(book.author);
     }
 
     @Override
     public int hashCode() {
         int result = title.hashCode();
-        result = 31 * result + athor.hashCode();
+        result = 31 * result + author.hashCode();
         result = 31 * result + publicationYear;
         return result;
     }
