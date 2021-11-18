@@ -1,4 +1,7 @@
-package com.kodilla.testing.forum;
+package com.kodilla.testing.forum.forum;
+
+import com.kodilla.testing.forum.forum.ForumComment;
+import com.kodilla.testing.forum.forum.ForumPost;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
