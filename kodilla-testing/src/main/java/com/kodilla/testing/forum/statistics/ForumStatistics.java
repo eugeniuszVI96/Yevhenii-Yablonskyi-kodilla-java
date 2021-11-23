@@ -35,28 +35,4 @@ public class ForumStatistics {
                 ", commentsPerPosts=" + commentsPerPosts;
 
     }
-
-    public int getUsersCount() {
-        return usersCount;
-    }
-
-    public int getPostsCount() {
-        return postsCount;
-    }
-
-    public int getCommentsCount() {
-        return commentsCount;
-    }
-
-    public double getPostsPerUser() {
-        return postsPerUser;
-    }
-
-    public double getCommentsPerUser() {
-        return commentsPerUser;
-    }
-
-    public double getCommentsPerPosts() {
-        return commentsPerPosts;
-    }
 }

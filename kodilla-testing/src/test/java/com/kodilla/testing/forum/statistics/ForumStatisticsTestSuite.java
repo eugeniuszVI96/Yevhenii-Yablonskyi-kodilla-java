@@ -84,7 +84,7 @@ public class ForumStatisticsTestSuite {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertTrue(forumStatistics.getCommentsCount() > forumStatistics.getPostsCount());
+        assertEquals("usersCount=0, postsCount=1, commentsCount=2, postsPerUser=0.0, commentsPerUser=0.0, commentsPerPosts=2.0", forumStatistics.showStatistics());
     }
 
     @Test
@@ -98,7 +98,7 @@ public class ForumStatisticsTestSuite {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertTrue(forumStatistics.getCommentsCount() < forumStatistics.getPostsCount());
+        assertEquals("usersCount=0, postsCount=2, commentsCount=1, postsPerUser=0.0, commentsPerUser=0.0, commentsPerPosts=0.5", forumStatistics.showStatistics());
     }
 
     @Test
@@ -112,7 +112,7 @@ public class ForumStatisticsTestSuite {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals(0, forumStatistics.getUsersCount());
+        assertEquals("usersCount=0, postsCount=0, commentsCount=0, postsPerUser=0.0, commentsPerUser=0.0, commentsPerPosts=0.0", forumStatistics.showStatistics());
     }
 
     private static List<String> listOfUsers(int quantity) {
@@ -134,9 +134,7 @@ public class ForumStatisticsTestSuite {
         forumStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals(100, forumStatistics.getUsersCount());
+        assertEquals("usersCount=100, postsCount=0, commentsCount=0, postsPerUser=0.0, commentsPerUser=0.0, commentsPerPosts=0.0", forumStatistics.showStatistics());
 
     }
-
-
 }
