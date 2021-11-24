@@ -1,0 +1,9 @@
+Gdy metoda zapisana przy pomocy wyrażenia lambda otrzymuje tylko jeden argument wejściowy oraz posiada jedną linię kodu opatrzoną słowem return, np.
+
+boolean isExpressioneLessThan10(int expression) {
+   return expression < 10;
+}
+
+wówczas możemy użyć uproszczonego zapisu wyrażenia lambda – argument wejściowy nie musi być otoczony nawiasami, a słowo return można pominąć:
+
+n -> n < 10;
