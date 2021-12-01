@@ -80,3 +80,4 @@ public class ForumUser {
         return realName;
     }
 }
+

@@ -1,0 +1,17 @@
+Przydatne skróty klawiaturowe
+
+Esc – przenosi kursor do okna z kodem z dowolnego innego okna IntelliJ (z wyjątkiem okna terminala),
+F12 – przenosi kursor do ostatnio używanego okna narzędziowego,
+Ctrl+/ (dla macOS: cmd+/) – komentuje/odkomentowuje zaznaczony kod komentarzem //,
+Ctrl+Shift+/ (dla macOS: cmd+Shift+/) – komentuje/odkomentowuje zaznaczony kod komentarzem /*...*/,
+Ctrl+w (dla macOS: cmd+w) – zaznacza cały wyraz, na którym stoi kursor w oknie z kodem. Ponowne naciśnięcia Ctrl+w rozszerzają zaznaczenie na otaczający tekst,
+Ctrl+Alt+i (dla macOS: cmd+Alt+i) – poprawia formatowanie zaznaczonego kodu,
+Shift+F6 – pozwala na zmianę nazwy zmiennej, metody, klasy czy interfejsu w taki sposób, że zmieniane są również nazwy we wszystkich miejscach w kodzie, gdzie dana zmienna czy klasa była używana (tzw. name refactor),
+Ctrl+n (dla macOS: cmd+n) – wyszukiwanie klas w plikach z kodem źródłowym na podstawie nazwy,
+Shift+Shift (dwa razy Shift) – otwiera wyszukiwarkę pozwalającą odszukiwać klasy, zmienne i obiekty na aktualnym projekcie,
+Ctrl+Shift+F10 (dla macOS: cmd+Shift+F10) – kompilacja i uruchomienie programu. Działa w oknie z kodem podczas przeglądania metod możliwych do uruchomienia (np. metody main(String[] args) lub metod oznaczonych adnotacją @Test),
+Alt+Insert – generowanie stałych części kodu (konstruktory, gettery itd.),
+Alt+Enter – automatyczne uzupełnianie importów oraz generowanie niektórych stałych fragmentów kodu (jak. na przykład kod testu dla klasy),
+Ctrl+Space (dla macOS: cmd+Space) – podpowiada możliwe do wstawienia w danym miejscu kodu zmienne, obiekty, klasy i metody,
+napisz "sout" i naciśnij Tab – spowoduje to wstawienie tekstu System.out.println() – przydatne, gdy często wyświetlasz coś na ekranie konsoli.
+Ostatni sposób na liście powyżej to tzw.szablon kodu (ang. live template) – pełną ich listę możesz sprawdzić w IntelliJ przy pomocy funkcji "File" -> "Settings" -> "Editor" -> "Code Style" -> "Live Templates". Możesz też dodawać własne szablony, jeżeli często stosujesz dany fragment kodu.

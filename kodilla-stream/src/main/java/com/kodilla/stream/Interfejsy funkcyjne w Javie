@@ -1,0 +1,30 @@
+W związku z wprowadzeniem wyrażeń lambda, w języku Java pojawiło się pojęcie interfejsu funkcyjnego (ang. functional interface). Jest to specyficzny rodzaj interfejsu, posiadający tylko jedną metodę, który doskonale nadaje się do implementowania przez wyrażenia lambda (jak pamiętasz, zmienna przechowująca kod w postaci wyrażenia lambda jest właśnie typu takiego interfejsu).
+
+Język Java wyposażono w zestaw gotowych interfejsów funkcyjnych ogólnego przeznaczenia, takich jak na przykład:
+
+@FunctionalInterface
+public interface Predicate<T> {
+   boolean test(T t);
+}
+lub
+
+// The T is the input argument while R is the return result
+ @FunctionalInterface
+public interface Function<T, R> {
+   R apply(T t);
+}
+lub
+
+@FunctionalInterface
+public interface Consumer<T> {
+   void accept(T t);
+}
+czy też
+
+@FunctionalInterface
+public interface Supplier<T> {
+   T get();
+}
+Interfejsów tych jest dużo więcej, ale nie musisz ich wszystkich znać. Zauważ, że interfejsy te opatrzone są adnotacją @FunctionalInterface. Jest to adnotacja informacyjna, mówiąca, iż przeznaczeniem interfejsu jest użycie go w programowaniu funkcyjnym (czyli np. w wyrażeniach lambda). Często będziesz spotykać takie interfejsy w metodach udostępnianych przez Stream.
+
+Więcej możesz dowiedzieć się tutaj lub tutaj.
