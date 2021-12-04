@@ -5,19 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class World {
-    private final List<Continent>listOfContinentsOnTheWorld = new ArrayList<>();
+
+    private final List<Continent> continents = new ArrayList<>();
 
     public boolean addContinent(Continent continent){
-        return listOfContinentsOnTheWorld.add(continent);
+        return continents.add(continent);
     }
 
     public BigDecimal getPeopleQuantity(){
-        BigDecimal peopleQtyOnTheWorld = listOfContinentsOnTheWorld.stream()
-                .flatMap(continent -> continent.getListOfCountriesOnContinent().stream())
-                .distinct()
+        BigDecimal peopleQuantityOnTheWorld = continents.stream()
+                .flatMap(continent -> continent.getCountries().stream())
                 .map(Country::getPeopleQuantity)
                 .reduce(BigDecimal.ZERO, (sum,country) -> sum.add(country));
-
-        return peopleQtyOnTheWorld;
+        return peopleQuantityOnTheWorld;
     }
 }

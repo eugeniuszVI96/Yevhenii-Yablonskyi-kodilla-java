@@ -20,7 +20,7 @@ public class WorldTestSuite {
         Country hungary = new Country("Hungary");
         Country montenegro = new Country("Montenegro");
         Country japan = new Country("Japan");
-        Country katar = new Country("Katar");
+        Country qatar = new Country("Qatar");
         Country vietnam = new Country("Vietnam");
         Country australiaCountry = new Country("Australia");
         Country fiji = new Country("Fiji");
@@ -36,7 +36,7 @@ public class WorldTestSuite {
         europa.addCountry(russia);
 
         asia.addCountry(japan);
-        asia.addCountry(katar);
+        asia.addCountry(qatar);
         asia.addCountry(vietnam);
         asia.addCountry(russia);
 
@@ -47,7 +47,7 @@ public class WorldTestSuite {
         BigDecimal totalPeople = world.getPeopleQuantity();
 
         //Then
-        BigDecimal totalPeopleExpected = new BigDecimal("9000009");
+        BigDecimal totalPeopleExpected = new BigDecimal("10000010");
         assertEquals(totalPeopleExpected, totalPeople);
     }
 }
