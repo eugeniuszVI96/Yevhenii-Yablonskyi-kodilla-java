@@ -1,4 +1,6 @@
-package com.kodilla.stream.lambda;
+package com.kodilla.stream.lambda.reference;
+
+import com.kodilla.stream.lambda.reference.MathExpression;
 
 public class ExpressionExecutor {
 
