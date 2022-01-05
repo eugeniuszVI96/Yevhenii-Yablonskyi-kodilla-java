@@ -3,8 +3,12 @@ package com.kodilla.stream.portfolio;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,6 +24,85 @@ public class BoardTestSuite {
 
         //Then
         assertEquals(3, project.getTaskLists().size());
+    }
+
+    //Przykład nr 1 – wyszukiwanie zadań użytkownika
+    @Test
+    void testAddTaskListFindUsersTasks() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        User user = new User("developer1", "John Smith");
+        List<Task> tasks = project.getTaskLists().stream()
+                .flatMap(l -> l.getTasks().stream())
+                .filter(t -> t.getAssignedUser().equals(user))
+                .collect(toList());
+
+        //Then
+        assertEquals(2, tasks.size());
+        assertEquals(user, tasks.get(0).getAssignedUser());
+        assertEquals(user, tasks.get(1).getAssignedUser());
+    }
+
+    //Przykład nr 2 – wyszukiwanie przeterminowanych zadań
+    @Test
+    void testAddTaskListFindOutDatedTasks() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> undoneTasks = new ArrayList<>();
+        undoneTasks.add(new TaskList("To do"));
+        undoneTasks.add(new TaskList("In progress"));
+        List<Task> tasks = project.getTaskLists().stream()
+                .filter(undoneTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
+                .collect(toList());
+
+        //Then
+        assertEquals(1, tasks.size());
+        assertEquals("HQLs for analysis", tasks.get(0).getTitle());
+    }
+
+    //Przykład nr 3 – obliczanie ilości zadań wykonywanych co najmniej od 10 dni
+    @Test
+    void testAddTaskListFindLongTasks() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTaskList = new ArrayList<>();
+        inProgressTaskList.add(new TaskList("In progress"));
+        long longTasks = project.getTaskLists().stream()
+                .filter(inProgressTaskList::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .map(Task::getCreated)
+                .filter(localDate -> localDate.compareTo(LocalDate.now().minusDays(10)) <= 0)
+                .count();
+
+        //Then
+        assertEquals(2, longTasks);
+    }
+
+    @Test
+    void testAddTaskListAverageWorkingOfTask() {
+        //Given
+        Board project = prepareTestData();
+        List<TaskList> inProgressTask = new ArrayList<>();
+        inProgressTask.add(new TaskList("In progress"));
+
+        // When
+        double averageWorkingOfTask = project.getTaskLists().stream()
+                .filter(inProgressTask::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .mapToInt(date -> Period.between(date.getCreated(), LocalDate.now()).getDays())
+                .average()
+                .orElse(0);
+
+        // Then
+        assertEquals(10.0, averageWorkingOfTask, 0.001);
     }
 
     private Board prepareTestData() {
@@ -86,66 +169,4 @@ public class BoardTestSuite {
         project.addTaskList(taskListDone);
         return project;
     }
-
-    //Przykład nr 1 – wyszukiwanie zadań użytkownika
-    @Test
-    void testAddTaskListFindUsersTasks() {
-        //Given
-        Board project = prepareTestData();
-
-        //When
-        User user = new User("developer1", "John Smith");
-        List<Task> tasks = project.getTaskLists().stream()
-                .flatMap(l -> l.getTasks().stream())
-                .filter(t -> t.getAssignedUser().equals(user))
-                .collect(toList());
-
-        //Then
-        assertEquals(2, tasks.size());
-        assertEquals(user, tasks.get(0).getAssignedUser());
-        assertEquals(user, tasks.get(1).getAssignedUser());
-    }
-
-    //Przykład nr 2 – wyszukiwanie przeterminowanych zadań
-    @Test
-    void testAddTaskListFindOutDatedTasks() {
-        //Given
-        Board project = prepareTestData();
-
-        //When
-        List<TaskList> undoneTasks = new ArrayList<>();
-        undoneTasks.add(new TaskList("To do"));
-        undoneTasks.add(new TaskList("In progress"));
-        List<Task> tasks = project.getTaskLists().stream()
-                .filter(undoneTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
-                .collect(toList());
-
-        //Then
-        assertEquals(1, tasks.size());
-        assertEquals("HQLs for analysis", tasks.get(0).getTitle());
-    }
-
-    //Przykład nr 3 – obliczanie ilości zadań wykonywanych co najmniej od 10 dni
-    @Test
-    void testAddTaskListFindLongTasks() {
-        //Given
-        Board project = prepareTestData();
-
-        //When
-        List<TaskList> inProgressTask = new ArrayList<>();
-        inProgressTask.add(new TaskList("In progress"));
-        long longTasks = project.getTaskLists().stream()
-                .filter(inProgressTask::contains)
-                .flatMap(taskList -> taskList.getTasks().stream())
-                .map(Task::getCreated)
-                .filter(localDate -> localDate.compareTo(LocalDate.now().minusDays(10)) <= 0)
-                .count();
-
-        //Then
-        assertEquals(2, longTasks);
-    }
-
-
 }
