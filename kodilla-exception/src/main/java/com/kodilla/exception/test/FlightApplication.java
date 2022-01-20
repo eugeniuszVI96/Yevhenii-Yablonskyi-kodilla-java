@@ -3,20 +3,20 @@ package com.kodilla.exception.test;
 public class FlightApplication {
 
     public static void main(String[] args) throws RouteNotFoundException {
-        Flight flight1 = new Flight("Paris", "Amsterdam");
-        Flight flight2 = new Flight( "Moscow","Berlin");
-        Flight flight3 = new Flight("Wroclaw", "New York");
-        FlightSearchEngine search = new FlightSearchEngine();
-        String result = "";
+        Flight flight1 = new Flight("Warsaw", "Amsterdam");
+        Flight flight2 = new Flight( "Warsaw","Berlin");
+        Flight flight3 = new Flight("Warsaw", "New York");
+
+        FlightManagement flightManagement = new FlightManagement();
+        flightManagement.add("Amsterdam", true);
+        flightManagement.add("Berlin", false);
 
         try {
-            result = search.findFlight(flight1);
+            flightManagement.findFlight(flight3);
         }
         catch (RouteNotFoundException e) {
             System.out.println(e);
         }
-        finally {
-            System.out.println(result);
-        }
     }
 }
+
