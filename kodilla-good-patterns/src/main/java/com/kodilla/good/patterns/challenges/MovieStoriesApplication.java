@@ -9,14 +9,10 @@ public class MovieStoriesApplication {
 
         MovieStore movieStore = new MovieStore();
 
-        List<String> movies = movieStore.getMovies().entrySet().stream()
+        String movies = movieStore.getMovies().entrySet().stream()
                 .flatMap(g -> g.getValue().stream())
-                .collect(Collectors.toList());
+                .collect(Collectors.joining("!"));
 
-        movies.stream()
-                .map(s -> s + "!")
-                .forEach(System.out::println);
-
-
+        System.out.println(movies);
     }
 }
