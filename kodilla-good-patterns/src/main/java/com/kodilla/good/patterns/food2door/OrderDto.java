@@ -1,21 +1,22 @@
 package com.kodilla.good.patterns.food2door;
 
-import com.kodilla.good.patterns.food2door.simple.classes.Supplier;
+import com.kodilla.good.patterns.food2door.simple.Product;
 
 public class OrderDto {
-    public Supplier supplier;
-    public boolean isOrdered;
 
-    public OrderDto(final Supplier supplier, final boolean isOrdered) {
-        this.supplier = supplier;
-        this.isOrdered = isOrdered;
+    private final Product product;
+    private final boolean isThere;
+
+    public OrderDto(Product product, boolean isOrdered) {
+        this.product = product;
+        this.isThere = isOrdered;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public Product getProduct() {
+        return product;
     }
 
-    public boolean isOrdered() {
-        return isOrdered;
+    public boolean isThere() {
+        return isThere;
     }
 }

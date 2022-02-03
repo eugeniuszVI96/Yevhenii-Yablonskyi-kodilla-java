@@ -1,29 +1,23 @@
 package com.kodilla.good.patterns.food2door;
 
-import com.kodilla.good.patterns.food2door.simple.classes.Product;
-import com.kodilla.good.patterns.food2door.simple.classes.Supplier;
+import com.kodilla.good.patterns.food2door.simple.ProducerName;
+import com.kodilla.good.patterns.food2door.simple.Product;
 
 public class OrderRequest {
 
-    private final Supplier supplier;
+    private final ProducerName producerName;
     private final Product product;
-    private final int noOfItems;
 
-    public OrderRequest(final Supplier supplier, final Product product, final int noOfItems) {
-        this.supplier = supplier;
+    public OrderRequest(ProducerName producerName, Product product) {
+        this.producerName = producerName;
         this.product = product;
-        this.noOfItems= noOfItems;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public String getProducer() {
+        return producerName.getInternal();
     }
 
     public Product getProduct() {
         return product;
-    }
-
-    public int getNoOfItems() {
-        return noOfItems;
     }
 }

@@ -1,30 +1,35 @@
 package com.kodilla.good.patterns.food2door.shops;
 
-import com.kodilla.good.patterns.food2door.*;
-import com.kodilla.good.patterns.food2door.interfaces.Manufacturer;
-import com.kodilla.good.patterns.food2door.interfaces.OrderService;
-import com.kodilla.good.patterns.food2door.simple.classes.Product;
-import com.kodilla.good.patterns.food2door.simple.classes.Supplier;
+import com.kodilla.good.patterns.food2door.ProducerRepository;
+import com.kodilla.good.patterns.food2door.OrderDto;
+import com.kodilla.good.patterns.food2door.interfaces.FoodProducer;
+import com.kodilla.good.patterns.food2door.simple.Product;
+import java.util.Random;
 
-public class ExtraFoodShop implements Manufacturer, OrderService {
+public class ExtraFoodShop implements FoodProducer {
 
-    @Override
-    public OrderDto process(final OrderRequest orderRequest) {
-        boolean isOrdered = order(orderRequest.getSupplier(), orderRequest.getProduct());
-        if (isOrdered) {
-            return new OrderDto(orderRequest.getSupplier(),true);
+    private final ProducerRepository producerRepository;
+    private static final Random RANDOM = new Random();
+
+    public ExtraFoodShop(ProducerRepository producerRepository) {
+        this.producerRepository = producerRepository;
+    }
+
+    public String getName() {
+        return getClass().getSimpleName();
+    }
+
+    public OrderDto process(Product product) {
+        Double result = producerRepository.getForProducer(getName(), product.getName());
+        if (result == null) {
+            return new OrderDto(product, false);
         } else {
-            return new OrderDto(orderRequest.getSupplier(),false);
+            if (result >= product.getQuantity()) {
+                return new OrderDto(product, RANDOM.nextBoolean());
+            } else {
+                return new OrderDto(product, false);
+            }
         }
     }
 
-    @Override
-    public boolean order(Supplier supplier, Product product) {
-        System.out.println("New order has been created.");
-        System.out.println("Order details:");
-        System.out.println("\tProduct: " + product.getName());
-        System.out.println("\tBuyer: " + supplier.getName());
-        System.out.println();
-        return true;
-    }
 }
