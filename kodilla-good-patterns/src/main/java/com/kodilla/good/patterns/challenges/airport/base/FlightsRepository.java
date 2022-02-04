@@ -8,20 +8,20 @@ import com.kodilla.good.patterns.challenges.airport.simple.Time;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FlightBase implements FlightService {
+public class FlightsRepository implements FlightService {
 
-    private Map<Time, Flight> base = new HashMap<>();
+    private Map<Flight, Time> repository = new HashMap<>();
 
     public void addFlight(Flight flight, Time flightTime) {
-        base.put(flightTime, flight);
+        repository.put(flight, flightTime);
     }
 
-    public Map<Time, Flight> getBase() throws BaseIsEmptyException {
-        if (base.isEmpty()) {
+    public Map<Flight, Time> getBase() throws BaseIsEmptyException {
+        if (repository.isEmpty()) {
             throw new BaseIsEmptyException("Base is empty");
         }
         else {
-            return base;
+            return repository;
         }
     }
 }

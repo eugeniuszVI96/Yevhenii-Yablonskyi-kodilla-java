@@ -22,8 +22,8 @@ public class Flights {
             LocalDateTime.of(2022, 3, 12, 21, 15),
             LocalDateTime.of(2022, 3, 12, 23, 40));
 
-    FlightBase flightBase = new FlightBase();
-    flightBase.addFlight(flight1, time1);
-    flightBase.addFlight(flight2, time2);
-    flightBase.addFlight(flight3, time3);
+    FlightsRepository flightsRepository = new FlightsRepository();
+    flightsRepository.addFlight(flight1, time1);
+    flightsRepository.addFlight(flight2, time2);
+    flightsRepository.addFlight(flight3, time3);
 }
