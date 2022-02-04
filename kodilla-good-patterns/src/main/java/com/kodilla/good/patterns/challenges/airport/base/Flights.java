@@ -22,8 +22,10 @@ public class Flights {
             LocalDateTime.of(2022, 3, 12, 21, 15),
             LocalDateTime.of(2022, 3, 12, 23, 40));
 
-    FlightsRepository flightsRepository = new FlightsRepository();
-    flightsRepository.addFlight(flight1, time1);
-    flightsRepository.addFlight(flight2, time2);
-    flightsRepository.addFlight(flight3, time3);
+    public void ff() {
+        FlightsRepository flightsRepository = new FlightsRepository();
+        flightsRepository.addFlight(flight1, time1);
+        flightsRepository.addFlight(flight2, time2);
+        flightsRepository.addFlight(flight3, time3);
+    }
 }
