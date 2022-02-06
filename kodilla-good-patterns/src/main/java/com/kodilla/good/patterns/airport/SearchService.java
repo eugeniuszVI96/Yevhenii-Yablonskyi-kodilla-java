@@ -33,8 +33,7 @@ public class SearchService {
 
     public void searchAllFlight(FlightRequest fightRequest) throws RepositoryIsEmptyException {
         Map<Integer, Flight> found = FLIGHTS_REPOSITORY.getRepository().entrySet().stream()
-                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getName()))
-                .filter(flight -> flight.getValue().getFrom().equals(fightRequest.getName()))
+                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getName()) || flight.getValue().getFrom().equals(fightRequest.getName()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         if (found.isEmpty()) {
