@@ -9,35 +9,23 @@ import java.util.stream.Collectors;
 
 public class SearchService {
 
-    private static final FlightsRepository FLIGHTS_REPOSITORY = new FlightsRepository();
+    private final FlightsRepository flightsRepository = new FlightsRepository();
 
-    public void searchFlightTo(FlightRequest fightRequest) throws RepositoryIsEmptyException {
-        Map<Integer, Flight> found = FLIGHTS_REPOSITORY.getRepository().entrySet().stream()
-                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getName()))
+    public void searchFlightTo(FlightRequest fightRequest) {
+        Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
+                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getCity()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-        if (found.isEmpty()) {
-            throw new RepositoryIsEmptyException("Didn't find any flight");
-        }
     }
 
-    public void searchFlightFrom(FlightRequest fightRequest) throws RepositoryIsEmptyException {
-        Map<Integer, Flight> found = FLIGHTS_REPOSITORY.getRepository().entrySet().stream()
-                .filter(flight -> flight.getValue().getFrom().equals(fightRequest.getName()))
+    public void searchFlightFrom(FlightRequest fightRequest) {
+        Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
+                .filter(flight -> flight.getValue().getFrom().equals(fightRequest.getCity()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-        if (found.isEmpty()) {
-            throw new RepositoryIsEmptyException("Didn't find any flight");
-        }
     }
 
-    public void searchAllFlight(FlightRequest fightRequest) throws RepositoryIsEmptyException {
-        Map<Integer, Flight> found = FLIGHTS_REPOSITORY.getRepository().entrySet().stream()
-                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getName()) || flight.getValue().getFrom().equals(fightRequest.getName()))
+    public void searchAllFlight(FlightRequest fightRequest) {
+        Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
+                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getCity()) || flight.getValue().getFrom().equals(fightRequest.getCity()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-
-        if (found.isEmpty()) {
-            throw new RepositoryIsEmptyException("Didn't find any flight");
-        }
     }
 }

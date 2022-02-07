@@ -1,17 +1,15 @@
 package com.kodilla.good.patterns.airport;
 
-import com.kodilla.good.patterns.airport.simple.City;
-
 public class FlightRequest {
 
-    private final City name;
+    private final String city;
 
-    public FlightRequest(City name) {
-        this.name = name;
+    public FlightRequest(String city) {
+        this.city = city;
     }
 
-    public String getName() {
-        return name.getName();
+    public String getCity() {
+        return city;
     }
 
     @Override
@@ -21,18 +19,18 @@ public class FlightRequest {
 
         FlightRequest that = (FlightRequest) o;
 
-        return name.equals(that.name);
+        return city.equals(that.city);
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return city.hashCode();
     }
 
     @Override
     public String toString() {
         return "FlightRequest{" +
-                "name='" + name + '\'' +
+                "city='" + city + '\'' +
                 '}';
     }
 }

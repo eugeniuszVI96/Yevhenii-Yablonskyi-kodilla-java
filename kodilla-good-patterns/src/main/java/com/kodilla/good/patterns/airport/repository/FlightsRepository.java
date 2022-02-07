@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class FlightsRepository {
 
-    private static final Map<Integer, Flight> repository = new HashMap<>();
+    private static final Map<Integer, Flight> FLIGHTS = new HashMap<>();
 
     private static final Flight FLIGHT_1 = new Flight(
             "Prague", "Oslo",
@@ -28,13 +28,13 @@ public class FlightsRepository {
                     LocalDateTime.of(2022, 3, 12, 23, 40)));
 
     static {
-        repository.put(1111, FLIGHT_1);
-        repository.put(2222, FLIGHT_2);
-        repository.put(3333, FLIGHT_3);
+        FLIGHTS.put(1111, FLIGHT_1);
+        FLIGHTS.put(2222, FLIGHT_2);
+        FLIGHTS.put(3333, FLIGHT_3);
     }
 
-    public Map<Integer, Flight> getRepository() {
-        return repository;
+    public Map<Integer, Flight> getFlights() {
+        return FLIGHTS;
     }
 
 
