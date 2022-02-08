@@ -9,23 +9,34 @@ import java.util.stream.Collectors;
 
 public class SearchService {
 
-    private final FlightsRepository flightsRepository = new FlightsRepository();
+    private final FlightsRepository flightsRepository;
 
-    public void searchFlightTo(FlightRequest fightRequest) {
+    public SearchService(FlightsRepository flightsRepository) {
+        this.flightsRepository = flightsRepository;
+    }
+
+    public FlightsRepository getFlightsRepository() {
+        return flightsRepository;
+    }
+
+    public Map<Integer, Flight> searchFlightTo(FlightRequest fightRequest) {
         Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
                 .filter(flight -> flight.getValue().getTo().equals(fightRequest.getCity()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        return found;
     }
 
-    public void searchFlightFrom(FlightRequest fightRequest) {
+    public Map<Integer, Flight> searchFlightFrom(FlightRequest fightRequest) {
         Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
                 .filter(flight -> flight.getValue().getFrom().equals(fightRequest.getCity()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        return found;
     }
 
-    public void searchAllFlight(FlightRequest fightRequest) {
+    public Map<Integer, Flight> searchAllFlight(FlightRequest fightRequest) {
         Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
                 .filter(flight -> flight.getValue().getTo().equals(fightRequest.getCity()) || flight.getValue().getFrom().equals(fightRequest.getCity()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        return found;
     }
 }
