@@ -1,3 +1,4 @@
+
 package com.kodilla.spring.forum;
 
 import org.junit.jupiter.api.Test;
