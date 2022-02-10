@@ -11,8 +11,8 @@ public class Application {
 
         FlightsRepository flightsRepository = new FlightsRepository();
         SearchService searchService = new SearchService(flightsRepository);
-        searchService.searchFlightFrom(flightRequest);
-        searchService.searchFlightTo(flightRequest);
-        searchService.searchAllFlight(flightRequest);
+        searchService.searchFlightsFrom(flightRequest);
+        searchService.searchFlightsTo(flightRequest);
+        searchService.searchFlightsVia(flightRequest);
     }
 }

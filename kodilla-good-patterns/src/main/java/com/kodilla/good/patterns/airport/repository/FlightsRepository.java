@@ -4,12 +4,14 @@ import com.kodilla.good.patterns.airport.simple.Flight;
 import com.kodilla.good.patterns.airport.simple.Time;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FlightsRepository {
 
-    private static final Map<Integer, Flight> FLIGHTS = new HashMap<>();
+    private static final List<Flight> FLIGHTS = new ArrayList<>();
 
     private static final Flight FLIGHT_1 = new Flight(
             "Prague", "Oslo",
@@ -28,12 +30,12 @@ public class FlightsRepository {
                     LocalDateTime.of(2022, 3, 12, 23, 40)));
 
     static {
-        FLIGHTS.put(1111, FLIGHT_1);
-        FLIGHTS.put(2222, FLIGHT_2);
-        FLIGHTS.put(3333, FLIGHT_3);
+        FLIGHTS.add(FLIGHT_1);
+        FLIGHTS.add(FLIGHT_2);
+        FLIGHTS.add(FLIGHT_3);
     }
 
-    public Map<Integer, Flight> getFlights() {
+    public List<Flight> getFlights() {
         return FLIGHTS;
     }
 

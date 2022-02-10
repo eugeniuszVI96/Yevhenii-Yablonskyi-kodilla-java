@@ -4,8 +4,10 @@ import com.kodilla.good.patterns.airport.exception.RepositoryIsEmptyException;
 import com.kodilla.good.patterns.airport.repository.FlightsRepository;
 import com.kodilla.good.patterns.airport.simple.Flight;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SearchService {
 
@@ -19,24 +21,25 @@ public class SearchService {
         return flightsRepository;
     }
 
-    public Map<Integer, Flight> searchFlightTo(FlightRequest fightRequest) {
-        Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
-                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getCity()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    public List<Flight> searchFlightsTo(FlightRequest fightRequest) {
+        List<Flight> found = flightsRepository.getFlights().stream()
+                .filter(flight -> flight.getTo().equals(fightRequest.getCity()))
+                .collect(Collectors.toList());
         return found;
     }
 
-    public Map<Integer, Flight> searchFlightFrom(FlightRequest fightRequest) {
-        Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
-                .filter(flight -> flight.getValue().getFrom().equals(fightRequest.getCity()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    public List<Flight> searchFlightsFrom(FlightRequest fightRequest) {
+        List<Flight> found = flightsRepository.getFlights().stream()
+                .filter(flight -> flight.getFrom().equals(fightRequest.getCity()))
+                .collect(Collectors.toList());
         return found;
     }
 
-    public Map<Integer, Flight> searchAllFlight(FlightRequest fightRequest) {
-        Map<Integer, Flight> found = flightsRepository.getFlights().entrySet().stream()
-                .filter(flight -> flight.getValue().getTo().equals(fightRequest.getCity()) || flight.getValue().getFrom().equals(fightRequest.getCity()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    public List<Flight> searchFlightsVia(FlightRequest fightRequest) {
+        List<Flight> from = searchFlightsTo(fightRequest);
+        List<Flight> to = searchFlightsFrom(fightRequest);
+        List<Flight> found = Stream.concat(from.stream(), to.stream())
+                .collect(Collectors.toList());
         return found;
     }
 }
