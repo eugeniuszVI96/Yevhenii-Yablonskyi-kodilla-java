@@ -26,7 +26,7 @@ public class SettingsFileEngineTestSuite {
     void testGetFileName() {
         //Given
         //When
-        String fileName = settingsFileEngine.getFileName();;
+        String fileName = settingsFileEngine.getFileName();
         System.out.println("Opened: " + fileName);
         //Then
         assertEquals("myapp.settings", fileName);
