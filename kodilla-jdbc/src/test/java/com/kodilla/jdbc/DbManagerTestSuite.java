@@ -58,16 +58,15 @@ class DbManagerTestSuite {
         ResultSet rs = statement.executeQuery(sqlQuery);
 
         //Then
+        String exceptedString = "Jonh, Smith";
+        StringBuilder stringBuilder = new StringBuilder();
         int counter = 0;
         while (rs.next()) {
-            System.out.println(rs.getString("FIRSTNAME") + ", " +
-                    rs.getString("LASTNAME"));
-            counter++;
+            stringBuilder.append(rs.getString("FIRSTNAME")).append(", ").append(rs.getString("LASTNAME"));
+            counter ++;
         }
         rs.close();
         statement.close();
-        assertEquals(1, counter);
+        assertEquals(exceptedString, stringBuilder.toString());
     }
 }
-
-
