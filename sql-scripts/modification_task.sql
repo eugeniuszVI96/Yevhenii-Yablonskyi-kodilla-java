@@ -1,0 +1,38 @@
+INSERT INTO posts(USER_ID, BODY)
+VALUES (1, "Post A");
+
+INSERT INTO POSTS(USER_ID, BODY)
+VALUES (2, "Post B");
+
+INSERT INTO posts(USER_ID, BODY)
+VALUES (3, "Post C");
+
+COMMIT;
+
+UPDATE POSTS
+SET BODY = "To delite"
+WHERE ID = 7;
+
+UPDATE posts
+SET BODY = "To delite"
+WHERE ID = 8;
+
+UPDATE posts
+SET BODY = "To delite"
+WHERE ID = 9;
+
+COMMIT ;
+
+DELETE
+FROM posts
+WHERE ID = 7;
+
+DELETE
+FROM posts
+WHERE ID = 8;
+
+DELETE
+FROM posts
+WHERE ID = 9;
+
+COMMIT;
