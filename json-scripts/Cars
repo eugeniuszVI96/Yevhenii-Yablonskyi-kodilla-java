@@ -1,0 +1,20 @@
+{
+  "name": "Fiat Punto",
+  "brand": "Fiat",
+  "chairs":[
+    {
+      "material": "Alcantra",
+      "color": "GRAY"
+    }, {
+      "material": "Alcantra",
+      "color": "GRAY"
+    }, {
+      "material": "Alcantra",
+      "color": "GRAY"
+    }, {
+      "material": "Alcantra",
+      "color": "GRAY"
+    }
+  ],
+  "engineCapacity": 1.5
+}
